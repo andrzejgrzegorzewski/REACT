@@ -1,30 +1,34 @@
-class App extends React.Component {
-  state = {
+class App extends React.Component{
+  state={
     value: ""
   }
 
-  handleInputChange = (e) => {
-    console.log(e.target.value);
-    this.setState({
-      value: e.target.value
-    })
-  }
+handleChange(e){
+  console.log("The content of the evente" + e.target.value);
+  console.log("The content of value before setState" + this.state.value);
 
-  handleResetClick = () => {
-    this.setState({
-      value: ""
-    })
-  }
+  this.setState({
+    value: e.target.value
+  })
+  console.log("The content of value after setState" + this.state.value);
+}
 
-  render() {
-    return (
-      <React.Fragment>
-        <input value={this.state.value} placeholder="wpisz..." onChange={this.handleInputChange} type="text" />
-        <button onClick={this.handleResetClick}>Reset</button>
-        <h1 className="title">{this.state.value.toUpperCase()}</h1>
-      </React.Fragment>
+handleClick = () => {
+  this.setState({
+    value:""
+  })
+}
+
+render(){
+  console.log("The content of value in render methode" + this.state.value);
+    return(
+      <>
+      <input value = {this.state.value} placeholder = "input" onChange = {this.handleChange.bind(this)} type="text"/>
+      <button onClick = {this.handleClick}>Reset</button>
+      <h1 className="title">{this.state.value.toUpperCase()}</h1>
+      </>
     )
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('root'))
+ReactDOM.render(<App />,document.getElementById('root'));
