@@ -58,9 +58,7 @@ render() {
         type="addition"
         click={this.handleMathClick}
       />
-
-     <h1>Clicks number: {this.state.count}</h1>
-     <h1>Result: {this.state.result}</h1>
+      <ResultPanel count = {this.state.count} result = {this.state.result}/>
      </>
 
   )
@@ -76,6 +74,18 @@ const MathButton = (props) => {
   )
 
 }
+
+const ResultPanel = (props) => {
+
+  return(
+    <>
+    < h1 > Clicks number: {props.count}
+    {props.count > 10 ? <span> . Processor overloading! </span> : null}</h1 >
+    <h1>Result: {props.result}</h1>
+    </>
+  )
+}
+
 
 const startValue = 20;
 ReactDOM.render(<Counter result = {startValue}/>, document.getElementById("root"));
