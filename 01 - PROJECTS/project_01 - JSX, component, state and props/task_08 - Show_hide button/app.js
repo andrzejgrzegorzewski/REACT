@@ -8,9 +8,9 @@ class Message extends React.Component {
   }
 
   handleMessageButton(){
-    this.setState({
-      messageIsActive: !this.state.messageIsActive
-    });
+    this.setState((prevState) => ({
+      messageIsActive: !prevState.messageIsActive
+    }));
   }
 
   render() {
