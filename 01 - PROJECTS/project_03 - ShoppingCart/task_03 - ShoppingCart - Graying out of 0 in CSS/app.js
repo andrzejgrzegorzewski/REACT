@@ -34,7 +34,7 @@ class App extends React.Component {
       <span style={shoppingCart === 0 ? {opacity: 0.3}:{color:"red    "}}> {shoppingCart} </span>
 
       <button disabled = {shoppingCart === availableProducts ? true : false}
-      onClick = {this.handleAddToCart} > + < /button> 
+      onClick = {this.handleAddToCart} > + </button> 
       
       {shoppingCart > 0 && <button onClick = {this.handleBuy} > Buy </button>}
       </div>
