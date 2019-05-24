@@ -33,9 +33,17 @@ class Form extends React.Component {
   // }
 
   handleChange = (e) => {
-    this.setState({
-
-    })
+    console.log(e.target.type);
+    if(e.target.type === "checkbox"){
+      this.setState({
+        [e.target.name]: e.target.checked
+        })
+    } 
+    else{
+      this.setState({
+        [e.target.name]: e.target.value
+      })
+    }
   }
 
   render() {
@@ -44,33 +52,42 @@ class Form extends React.Component {
       <label>
         Add City 
         <br/>
-        <input value={this.state.city} onChange={this.handleChange} type="text"/>
+        <input name="city" value={this.state.city} onChange={this.handleChange} type="text"/>
       </label>
       <br/>
       <br/>
       <label>
       Write something about this city
       <br/>
-      < textarea value = {
-        this.state.text
-      }
-      onChange = {
-        this.handleChange
-      } > < /textarea>  
+      <textarea name = "text"
+      value = {this.state.text}
+      onChange = {this.handleChange} > </textarea>  
       </label>
       <br/>
       <br/>
       <label>
       Do you love this city
       <br/>
-      <input type="checkbox" checked={this.state.isLoved} onChange={this.handleIsLoveChange} />    
+      <input name = "isLoved"
+      type = "checkbox"
+      checked = {
+        this.state.isLoved
+      }
+      onChange = {
+        this.handleChange
+      }
+      />    
       </label>
       <br/>
       <br/>
       <label>
       How many times have you been in this city
       <br/>
-        <select value={this.state.number} onChange={this.handleChange}>
+        <select name = "number"
+        value = {
+          this.state.number
+        }
+        onChange = {this.handleChange}>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -79,8 +96,6 @@ class Form extends React.Component {
           <option value="more">more</option>
         </select>
       </label>
-
-
       </div>
     )
   }
