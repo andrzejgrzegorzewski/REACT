@@ -45,18 +45,57 @@ const Item = ({user}) => (
 )
 
 class ListItems extends React.Component {
+
+  state={
+    select: "all",
+  }
+
+  userList = () => {
+    let users = this.props.data.users;
+
+
+    switch (this.state.select) {
+      case "all":
+        return users.map(user => <Item user={user} key={user.id}/>)
+        
+        case "female":
+          users = users.filter(user => user.sex === "female")
+          return users.map(user => <Item user={user} key={user.id}/>)
+          
+          
+        case "male":
+          users = users.filter(user => user.sex === "male")
+          return users.map(user => <Item user={user} key={user.id}/>)
+      
+      default:
+        return "choose something from the list"
+    }
+  }
+
+  handleUserFilter = (option) => {
+    this.setState({
+      select: option,
+    })
+  }
+
+ 
+
   render() {
 
     let users = this.props.data.users
-    users = users.filter((user) =>  user.sex ==="female")
+
+   
 
 
     const Items = users.map(user => < Item key = {user.id} user = {user}/>)
 
     return (
-      <ul>
-        {Items}
-      </ul>
+      <div>
+        <button onClick={this.handleUserFilter.bind(this, "all")}>Everyone</button>
+        <button onClick={this.handleUserFilter.bind(this, "female")}>Female</button>
+        <button onClick={this.handleUserFilter.bind(this, "male")}>Male</button>
+        {this.userList()}
+      </div>
        
     )
   }
