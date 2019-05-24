@@ -32,6 +32,8 @@ class Form extends React.Component {
 
   // }
 
+  // or one handle instead all
+
   handleChange = (e) => {
     console.log(e.target.type);
     if(e.target.type === "checkbox"){
