@@ -1,8 +1,18 @@
+// 02----------------------------------------------------------------------------------
+// const Person = (props) => {
+//     return(
+//         <li>
+//         <button onClick={props.delete}>Delete</button>
+//         <span> {props.name}</span>
+//         </li>
+//     )
+// }
 
+// 03----------------------------------------------------------------------------
 const Person = (props) => {
     return(
         <li>
-        <button onClick={props.delete}>Delete</button>
+        <button onClick={() => props.delete(props.name)}>Delete</button>
         <span> {props.name}</span>
         </li>
     )
@@ -19,12 +29,12 @@ class App extends React.Component {
         ],
     }
 
+// 01------------------------------------------------------------------------------
 // handleDelete(id){
     
 //     const people = [...this.state.people]
-
 //     const index = people.findIndex(person => person.id === id)
-// console.log(index);
+
 //     people.splice(index,1)
 
 //     this.setState({
@@ -32,13 +42,32 @@ class App extends React.Component {
 //     })
 // }
 
-handleDelete(name){
+// 02-----------------------------------------------------------------------------------
+// handleDelete(name){
     
-    let people = Array.from(this.state.people)
+//     // const people = [...this.state.people]
+//     // or
+//     // let people = Array.from(this.state.people)
+//     // or
+//     let people = this.state.people.slice()
 
-    const index = people.findIndex(person => person.id === id)
-console.log(index);
-    people.splice(index,1)
+//     people = people.filter(person => name !== person.name)
+
+//     this.setState({
+//         people
+//     })
+// }
+
+// 03-----------------------------------------------------------------------------------
+handleDelete = name => {
+    
+    // const people = [...this.state.people]
+    // or
+    // let people = Array.from(this.state.people)
+    // or
+    let people = this.state.people.slice()
+
+    people = people.filter(person => name !== person.name)
 
     this.setState({
         people
@@ -47,10 +76,16 @@ console.log(index);
 
 render() {
     
+        // 01-------------------------------------------------------------------------------
         // const people = this.state.people.map(person => <Person key={person.id} name={person.name} delete={this.handleDelete.bind(this,person.id)}/>)
         // or
 
-        const people = this.state.people.map(person => <Person key={person.id} name={person.name} delete={this.handleDelete.bind(this,person.name)}/>)
+        // 02-------------------------------------------------------------------------------
+        // const people = this.state.people.map(person => <Person key={person.id} name={person.name} delete={this.handleDelete.bind(this,person.name)}/>)
+        // or with furnction handleDelete without arguments
+        
+        // 03-------------------------------------------------------------------------------
+        const people = this.state.people.map(person => <Person key={person.id} name={person.name} delete={this.handleDelete}/>)
 
         return (
             <ul>
