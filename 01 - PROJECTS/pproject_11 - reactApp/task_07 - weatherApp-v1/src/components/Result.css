@@ -1,0 +1,19 @@
+.result{
+    margin-left: 50px;
+    margin-right: 50px;
+    padding-top: 20px;
+    border-top:2px solid aquamarine;
+}
+
+.result h3, .result h4{
+    font-weight: normal;
+}
+
+.result em{
+    font-weight: bold;
+    color: aquamarine;
+}
+
+.result b{
+    color: red;
+}
